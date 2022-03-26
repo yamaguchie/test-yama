@@ -3,7 +3,12 @@ import tempfile
 import os
 import shutil
 
-from test_yama.jobs.sample.entrypoint import SampleJob
+try:
+  from test_yama.jobs.sample.entrypoint import SampleJob
+except:
+  %run "../../test_yama/jobs/sample/entrypoint"
+  
+# from test_yama.jobs.sample.entrypoint import SampleJob
 from pyspark.sql import SparkSession
 from unittest.mock import MagicMock
 

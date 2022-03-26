@@ -1,7 +1,17 @@
+# Databricks notebook source
+# MAGIC %run "../../test_yama/jobs/sample/entrypoint"
+
+# COMMAND ----------
+
 ## Databricks notebook source
 import unittest
 
-from test_yama.jobs.sample.entrypoint import SampleJob
+try:
+  from test_yama.jobs.sample.entrypoint import SampleJob
+except:
+  %run "../../test_yama/jobs/sample/entrypoint"
+
+
 from uuid import uuid4
 from pyspark.dbutils import DBUtils  # noqa
 
@@ -44,3 +54,11 @@ if __name__ == "__main__":
         raise RuntimeError(
             "One or multiple tests failed. Please check job logs for additional information."
         )
+
+# COMMAND ----------
+
+# MAGIC %sh ls -la ../../test_yama/jobs/sample/entrypoint
+
+# COMMAND ----------
+
+

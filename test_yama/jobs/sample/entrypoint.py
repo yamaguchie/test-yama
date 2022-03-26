@@ -1,3 +1,4 @@
+# Databricks notebook source
 ## Databricks notebook source
 from test_yama.common import Job
 
@@ -21,6 +22,6 @@ class SampleJob(Job):
         self.logger.info("Sample job finished!")
 
 
-if __name__ == "__main__":
-    job = SampleJob()
-    job.launch()
+#if __name__ == "__main__":
+#    job = SampleJob()
+#    job.launch()
