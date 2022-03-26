@@ -1,0 +1,9 @@
+{
+    "environments": {
+        "default": {
+            "profile": "DEFAULT",
+            "workspace_dir": "/Shared/dbx/test_yama",
+            "artifact_location": "dbfs:/Shared/dbx/projects/test_yama"
+        }
+    }
+}
