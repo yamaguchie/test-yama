@@ -1,17 +1,23 @@
+# Databricks notebook source
 ## Databricks notebook source
 import unittest
 import tempfile
 import os
 import shutil
-
-try:
-  from test_yama.jobs.sample.entrypoint import SampleJob
-except:
-  %run "../../test_yama/jobs/sample/entrypoint"
   
 # from test_yama.jobs.sample.entrypoint import SampleJob
 from pyspark.sql import SparkSession
 from unittest.mock import MagicMock
+
+# DatabricksNotebook上では当該SparkSession、それ以外の場合はlocalモードを想定。
+spark = SparkSession.builder.getOrCreate()
+app_name = spark.conf.get("spark.app.name")
+if app_name == 'Databricks Shell':
+  print("Databricks Notebook Execute")
+  %run "../../test_yama/jobs/sample/entrypoint"
+  #%run "./mymodule/hoge"
+else:
+  from test_yama.jobs.sample.entrypoint import SampleJob
 
 class SampleJobUnitTest(unittest.TestCase):
     def setUp(self):
@@ -42,4 +48,19 @@ class SampleJobUnitTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    tmp=SampleJobUnitTest()
+    tmp.setUp()
+    tmp.test_sample()
+    #unittest.main()
+
+# COMMAND ----------
+
+# MAGIC %whos
+
+# COMMAND ----------
+
+# MAGIC %run "../../test_yama/jobs/sample/entrypoint"
+
+# COMMAND ----------
+
+# MAGIC %whos
