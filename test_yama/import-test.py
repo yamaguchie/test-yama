@@ -12,3 +12,7 @@ else:
 # COMMAND ----------
 
 # MAGIC %whos
+
+# COMMAND ----------
+
+# MAGIC   %whos
